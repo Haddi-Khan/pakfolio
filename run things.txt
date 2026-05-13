@@ -1,0 +1,8 @@
+Host: ://supabase.com
+Port: 6543
+User: postgres.qppdpbmhjzlrbncurckw
+Password: z4v6V_pN!tLDz8A
+Database: postgres
+.\venv\Scripts\Activate.ps1
+npm run dev 
+

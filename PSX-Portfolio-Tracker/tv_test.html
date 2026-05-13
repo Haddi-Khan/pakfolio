@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div id="tv1" style="height: 400px; width: 600px;"></div>
+    <div id="tv2" style="height: 400px; width: 600px;"></div>
+    
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+    new TradingView.widget({
+      "autosize": true,
+      "symbol": "PSX:BIPL",
+      "interval": "D",
+      "timezone": "Etc/UTC",
+      "theme": "light",
+      "style": "1",
+      "locale": "en",
+      "enable_publishing": false,
+      "container_id": "tv1"
+    });
+    new TradingView.widget({
+      "autosize": true,
+      "symbol": "KARACHI:BIPL",
+      "interval": "D",
+      "timezone": "Etc/UTC",
+      "theme": "light",
+      "style": "1",
+      "locale": "en",
+      "enable_publishing": false,
+      "container_id": "tv2"
+    });
+    </script>
+</body>
+</html>

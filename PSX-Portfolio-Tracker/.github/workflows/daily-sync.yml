@@ -1,0 +1,24 @@
+name: Daily Data Sync
+
+on:
+  schedule:
+    # 21:00 UTC = 02:00 AM PKT — triggers after market close, before nightly jobs run
+    - cron: '0 21 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  trigger-nightly-jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger nightly EOD sync on Render backend
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" \
+            -X POST "${{ secrets.BACKEND_URL }}/api/scheduler/run-now/nightly_eod" \
+            -H "Content-Type: application/json"
+
+      - name: Trigger nightly MF NAV sync
+        run: |
+          sleep 10
+          curl -s -o /dev/null -w "%{http_code}" \
+            -X POST "${{ secrets.BACKEND_URL }}/api/scheduler/run-now/nightly_mf_navs" \
+            -H "Content-Type: application/json"
